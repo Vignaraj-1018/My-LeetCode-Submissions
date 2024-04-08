@@ -8,11 +8,7 @@ class Solution:
                 if len(stack) == 0:
                     return False
                 cur = stack.pop()
-                if ch == ")" and cur == "(":
-                    continue
-                elif ch == "]" and cur == "[":
-                    continue
-                elif ch == "}" and cur == "{":
+                if (ch == ")" and cur == "(") or (ch == "]" and cur == "[") or (ch == "}" and cur == "{"):
                     continue
                 else:
                     return False
