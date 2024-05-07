@@ -3,7 +3,6 @@ class Solution:
         sorted_score = sorted(score,reverse=True)
 
         for i in range(len(score)):
-            print(score[i])
             if sorted_score.index(score[i]) == 0:
                 score[i] = "Gold Medal"
             elif sorted_score.index(score[i]) == 1:
