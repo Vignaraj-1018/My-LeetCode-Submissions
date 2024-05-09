@@ -5,7 +5,6 @@ class Solution:
         
         for i in stones:
             heapq.heappush(heap,i*-1)
-        print(heap)
         while len(heap)>1:
             a,b = heapq.heappop(heap), heapq.heappop(heap)
             c = (a*-1) - (b*-1)
