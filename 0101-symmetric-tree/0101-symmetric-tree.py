@@ -8,7 +8,6 @@ class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         
         def isSysmmetric(level):
-            print(level)
             i, j = 0, len(level)-1
             
             while i<j:
