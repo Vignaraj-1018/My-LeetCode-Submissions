@@ -20,11 +20,10 @@ class Solution:
                     count_s2[i]+=1
             
             return count_s1 == count_s2
-        res = False
         while r<len(s2):
             if isPermutation(s1, s2[l:r+1]):
-                res = True
+                return True
             r+=1
             l+=1
         
-        return res
+        return False
