@@ -1,10 +1,10 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        if len(s1) > len(s2): return False
         wind = len(s1)
         l, r = 0, wind-1
 
         def isPermutation(s1, s2):
-            # print(s1, s2)
             count_s1 = {}
             count_s2 = {}
             for i in s1:
