@@ -2,7 +2,8 @@ class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
         res = []
         i,j = 0,0
-        while i < len(word1) and j < len(word2):
+        n, m = len(word1), len(word2)
+        while i < n and j < m:
             res.append(word1[i])            
             res.append(word2[j])
             i+=1
@@ -10,10 +11,10 @@ class Solution:
         
         res = ''.join(res)
         
-        if i <len(word1):
+        if i < n:
             res = res + word1[i:]
         
-        if j <len(word2):
+        if j < m:
             res = res + word2[j:]
             
         return res
