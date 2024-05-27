@@ -3,11 +3,19 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        rows = len(matrix)
-        
-        for i in range(rows):
-            for j in range(i, rows):
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-        
-        for i in range(rows):
-            matrix[i].reverse()
+        l, r = 0, len(matrix) - 1
+
+        while l < r:
+            for i in range(r - l):
+
+                top, btm = l, r
+
+                topLeft = matrix[top][l + i]
+                matrix[top][l + i] = matrix[btm - i][l]
+                matrix[btm - i][l] = matrix[btm][r - i]
+                matrix[btm][r - i] = matrix[top + i][r]
+                matrix[top + i][r] = topLeft
+            
+            l += 1
+            r -= 1
+                
