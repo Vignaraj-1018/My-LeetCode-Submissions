@@ -5,6 +5,7 @@ class Solution:
             for i in range(len(sentence[w])):
                 if sentence[w][:i] in dictionary:
                     sentence[w] = sentence[w][:i]
+                    break
                 
                        
         return " ".join(sentence)
