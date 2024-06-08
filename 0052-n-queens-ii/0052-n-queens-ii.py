@@ -1,5 +1,7 @@
 class Solution:
     def totalNQueens(self, n: int) -> int:
+        if n==1:
+            return 1
         res = [0]
         board = [['.'] * n for _ in range(n)]
 
