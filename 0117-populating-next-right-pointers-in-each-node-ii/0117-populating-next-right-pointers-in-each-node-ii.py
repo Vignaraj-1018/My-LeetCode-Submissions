@@ -11,27 +11,31 @@ class Node:
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
 
+        
         if not root:
-            return None
-
-        queue = [root]
-
-        while queue:
+            return root
+        
+        q = [root]
+        
+        while q:
+            
             level = []
-            for i in range(len(queue)):
-                cur = queue.pop(0)
+            for i in range(len(q)):
+                cur = q.pop(0)
                 if cur:
                     level.append(cur)
-                    queue.append(cur.left)
-                    queue.append(cur.right)
-
+                    q.append(cur.left)
+                    q.append(cur.right)
+            
             if level:
                 prev = level[0]
+                
                 for cur in level[1:]:
                     if cur:
                         prev.next = cur
                         prev = cur
-        
+            
         return root
+            
         
         
