@@ -19,19 +19,15 @@ class Solution:
         while q:
             
             level = []
-            for i in range(len(q)):
+            n = len(q)
+            for i in range(n):
                 cur = q.pop(0)
                 if cur:
                     level.append(cur)
                     q.append(cur.left)
                     q.append(cur.right)
+                    if i < n-1:
+                        cur.next = q[0]
             
-            if level:
-                prev = level[0]
-                
-                for cur in level[1:]:
-                    if cur:
-                        prev.next = cur
-                        prev = cur
             
         return root
