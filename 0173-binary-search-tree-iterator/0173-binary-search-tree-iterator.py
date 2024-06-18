@@ -9,7 +9,7 @@ class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):
         self.stack = []
         self.leftmost_inorder(root)
-
+    
     def leftmost_inorder(self, root):
         while root:
             self.stack.append(root)
@@ -17,11 +17,12 @@ class BSTIterator:
 
     def next(self) -> int:
         top = self.stack.pop()
-
+        
         if top.right:
             self.leftmost_inorder(top.right)
         
         return top.val
+        
 
     def hasNext(self) -> bool:
         return len(self.stack) > 0
