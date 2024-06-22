@@ -3,14 +3,24 @@ class Solution:
         if len(hand) % groupSize != 0:
             return False
         
-        count = Counter(hand)
-        print(count)
-        for card in sorted(count):
-            if count[card] > 0:
-                num_groups = count[card]
-                for i in range(groupSize):
-                    if count[card + i] < num_groups:
+        count = {}
+        for n in hand:
+            count[n] = 1 + count.get(n, 0)
+        
+        minH = list(count.keys())
+        heapq.heapify(minH)
+
+        while minH:
+            first = minH[0]
+
+            for i in range(first, first + groupSize):
+                if i not in count:
+                    return False
+                
+                count[i] -= 1
+                if count[i] == 0:
+                    if i != minH[0]:
                         return False
-                    count[card + i] -= num_groups
+                    heapq.heappop(minH)
         
         return True
