@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        
         _sum = 0
         
         def dfs(root):
@@ -14,12 +13,13 @@ class Solution:
                 return
             
             nonlocal _sum
+            
             dfs(root.right)
             temp = root.val
             root.val += _sum
             _sum += temp
-            
             dfs(root.left)
+            
         
         dfs(root)
         return root
