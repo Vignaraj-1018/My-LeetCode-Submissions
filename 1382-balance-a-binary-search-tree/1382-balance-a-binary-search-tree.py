@@ -12,21 +12,25 @@ class Solution:
         def dfs(root):
             if not root:
                 return
+            
             dfs(root.left)
             inOrder.append(root.val)
             dfs(root.right)
+            
         
         dfs(root)
         
-        def createBst(inOrder,l,h):
-            if (l>h):
+        def createBST(inOrder, l, h):
+            if l > h:
                 return None
             
             m = (l + h) // 2
             
-            root = TreeNode(inOrder[m])
-            root.left = createBst(inOrder,l,m-1)
-            root.right = createBst(inOrder,m+1,h)
-            return root
-
-        return createBst(inOrder, 0, len(inOrder)-1)
+            node = TreeNode(inOrder[m])
+            node.left = createBST(inOrder, l, m - 1)
+            node.right = createBST(inOrder, m + 1, h)
+            
+            return node
+        
+        
+        return createBST(inOrder, 0, len(inOrder)-1)
