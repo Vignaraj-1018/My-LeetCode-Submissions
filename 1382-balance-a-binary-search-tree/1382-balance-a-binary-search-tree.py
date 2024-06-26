@@ -18,15 +18,15 @@ class Solution:
         
         dfs(root)
         
-        def createBst(inOrder):
-            if not inOrder:
+        def createBst(inOrder,l,h):
+            if (l>h):
                 return None
             
-            m = len(inOrder)//2
+            m = (l + h) // 2
             
             root = TreeNode(inOrder[m])
-            root.left = createBst(inOrder[:m])
-            root.right = createBst(inOrder[m+1:])
+            root.left = createBst(inOrder,l,m-1)
+            root.right = createBst(inOrder,m+1,h)
             return root
 
-        return createBst(inOrder)
+        return createBst(inOrder, 0, len(inOrder)-1)
