@@ -2,6 +2,7 @@ class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
         count = []
         
+        
         for e in edges:
             if e[0] in count:
                 return e[0]
