@@ -5,7 +5,6 @@ class Solution:
         for i in nums1:
             freq[i] = 1 + freq.get(i, 0)
         
-        # print(freq)
         res = []
         for i in nums2:
             if i in freq and freq[i] > 0:
