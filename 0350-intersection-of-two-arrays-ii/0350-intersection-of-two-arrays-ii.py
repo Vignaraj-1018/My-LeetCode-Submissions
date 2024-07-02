@@ -1,16 +1,15 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        freq = {}
+        
+        for i in nums1:
+            freq[i] = 1 + freq.get(i, 0)
+        
+        # print(freq)
         res = []
-        nums1.sort()
-        nums2.sort()
-        i,j = 0,0
-        while i<len(nums1) and j<len(nums2):
-            if nums1[i]== nums2[j]:
-                res.append(nums1[i])
-                i+=1
-                j+=1
-            elif nums1[i]<nums2[j]:
-                i+=1
-            else:
-                j+=1
+        for i in nums2:
+            if i in freq and freq[i] > 0:
+                res.append(i)
+                freq[i] -= 1
+        
         return res
