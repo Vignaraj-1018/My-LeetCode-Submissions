@@ -1,15 +1,14 @@
 class Solution:
     def averageWaitingTime(self, customers: List[List[int]]) -> float:
-        time = 0
-        n = len(customers)
-        res = 0
-        while customers:
-            if customers[0][0] <= time:
-                time += customers[0][1]
-                res += time - customers[0][0]
-                customers.pop(0)
+        t, total = 0, 0
+
+        for arr, order in customers:
+            if t > arr:
+                total += t - arr
             else:
-                time += 1
+                t = arr
+            
+            t += order
+            total += order
         
-        print(res)
-        return res / n
+        return total / len(customers)
