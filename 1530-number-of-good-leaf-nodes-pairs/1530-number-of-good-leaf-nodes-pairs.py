@@ -12,10 +12,12 @@ class Solution:
         def dfs(node):
             nonlocal pairs
             if not node:
-                return []
+                return defaultdict(int)
 
             if not node.left and not node.right:
-                return [1]
+                count = defaultdict(int)
+                count[1] = 1
+                return count
             
             left_dist = dfs(node.left)
             right_dist = dfs(node.right)
@@ -23,10 +25,18 @@ class Solution:
             for d1 in left_dist:
                 for d2 in right_dist:
                     if d1 + d2 <= distance:
-                        pairs += 1
+                        pairs += left_dist[d1] * right_dist[d2]
 
-            res = left_dist + right_dist
-            return [d + 1 for d in res]
+            res = defaultdict(int)
+            for d in left_dist:
+                if d + 1 <= distance:
+                    res[d + 1] = left_dist[d]
+                    
+            for d in right_dist:
+                if d + 1 <= distance:
+                    res[d + 1] += right_dist[d]
+        
+            return res
 
         dfs(root)
         return pairs
