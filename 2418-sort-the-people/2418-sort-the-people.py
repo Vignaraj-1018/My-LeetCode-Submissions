@@ -1,20 +1,12 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        min_heap = []
+        heapq.heapify(min_heap)
+        for n, h in zip(names, heights):
+            heapq.heappush(min_heap, [h*-1, n])
+        res = []
+        while min_heap:
+            res.append(heapq.heappop(min_heap)[1])
+        # print(min_heap)
         
-        n = len(heights)
-        
-        for j in range(n):
-            swapped = False
-            
-            for i in range(0,n-j-1):
-                
-                if heights[i] < heights[i+1]:
-                    heights[i], heights[i+1] = heights[i+1], heights[i]
-                    names[i], names[i+1] = names[i+1], names[i]
-                    swapped = True
-            
-            if not swapped:
-                break
-        
-        return names
-                
+        return res
