@@ -7,12 +7,10 @@ class Solution:
             for n in temp:
                 res = res * 10 + mapping[int(n)]
             return res
-            
-        mappedValues = defaultdict(list)
-        for num in nums:
-            mappedValues[getMappedValue(num)].append(num)
+        
+        pairs = []
+        for i, num in enumerate(nums):
+            pairs.append((getMappedValue(num), i))
 
-        res = []
-        for num in sorted(mappedValues):
-            res.extend(mappedValues[num])
-        return res
+        pairs.sort()
+        return [nums[i] for n,i in pairs]
