@@ -2,10 +2,15 @@ class Solution:
     def sortJumbled(self, mapping: List[int], nums: List[int]) -> List[int]:
         
         def getMappedValue(num):
-            temp = str(num)
+            
             res = 0
-            for n in temp:
-                res = res * 10 + mapping[int(n)]
+            base = 1
+            if num == 0:
+                res = mapping[0]
+            while num:
+                res += base * mapping[num%10]
+                num //= 10
+                base *= 10
             return res
         
         pairs = []
