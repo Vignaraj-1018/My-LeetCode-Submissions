@@ -3,11 +3,10 @@ class Solution:
         
         def getMappedValue(num):
             temp = str(num)
-            res = []
+            res = 0
             for n in temp:
-                res.append(str(mapping[int(n)]))
-            
-            return int("".join(res))
+                res = res * 10 + mapping[int(n)]
+            return res
             
         mappedValues = defaultdict(list)
         for num in nums:
