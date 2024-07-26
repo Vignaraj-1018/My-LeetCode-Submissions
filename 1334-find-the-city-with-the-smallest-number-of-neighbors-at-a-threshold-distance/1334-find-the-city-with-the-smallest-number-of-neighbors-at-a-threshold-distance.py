@@ -7,7 +7,7 @@ class Solution:
             
         def dijkstra(src):
             heap = [(0, src)]
-            # heapq.heapify(heap)
+            heapq.heapify(heap)
             visit = set()
             
             while heap:
