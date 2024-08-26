@@ -10,14 +10,30 @@ class Solution:
     def postorder(self, root: 'Node') -> List[int]:
         res = []
         
-        def dfs(node):
-            if not node:
-                return
-            
-            for child in node.children:
-                dfs(child)
-            
-            res.append(node.val)
+        if not root:
+            return res
         
-        dfs(root)
+        stack = [(root,False)]
+        
+        while stack:
+            node, visited = stack.pop()
+            
+            if visited:
+                res.append(node.val)
+            else:
+                stack.append((node, True))
+                for c in node.children[::-1]:
+                    stack.append((c, False))
         return res
+        
+#         def dfs(node):
+#             if not node:
+#                 return
+            
+#             for child in node.children:
+#                 dfs(child)
+            
+#             res.append(node.val)
+        
+#         dfs(root)
+#         return res
