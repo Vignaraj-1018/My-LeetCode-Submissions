@@ -11,7 +11,7 @@ class Solution:
 
         pq = [[-1, start_node]]
 
-        heapq.heapify(pq)
+        # heapq.heapify(pq)
 
         while pq:
 
