@@ -12,4 +12,6 @@ class Solution:
         for i in range(len(timePoints) - 1):
             res = min(res, time_to_min(timePoints[i + 1]) - time_to_min(timePoints[i]))
 
+            if res == 0:
+                return res
         return res
