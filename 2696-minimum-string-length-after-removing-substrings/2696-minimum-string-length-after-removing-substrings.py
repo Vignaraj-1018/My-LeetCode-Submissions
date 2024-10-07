@@ -1,19 +1,16 @@
 class Solution:
     def minLength(self, s: str) -> int:
         
-        def removeSubString(s):
-            
-            if "AB" not in s and "CD" not in s:
-                return s
-            
-            if 'AB' in s:
-                index = s.find("AB")
-                s = s[:index] + s[index + 2:]
-            
-            elif 'CD' in s:
-                index = s.find("CD")
-                s = s[:index] + s[index + 2:]
-            
-            return removeSubString(s)
+        stack = []
         
-        return len(removeSubString(s))
+        for c in s:
+            stack.append(c)
+            
+            if len(stack) >= 2 and (
+                (stack[-2] == 'A' and stack[-1] == 'B') or
+                (stack[-2] == 'C' and stack[-1] == 'D')
+            ):
+                stack.pop()
+                stack.pop()
+        
+        return len(stack)
