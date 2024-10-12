@@ -11,16 +11,13 @@ class Solution:
         
         i, j = 0, 0
         res = 0
-        grps = 0
         
         while i < len(intervals):
             if start[i] <= end[j]:
-                grps += 1
                 i += 1
             else:
-                grps -= 1
                 j += 1
             
-            res = max(res, grps)
+            res = max(res, i - j)
         
         return res
