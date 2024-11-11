@@ -7,20 +7,19 @@ class Solution:
             
             return True
         
-        primes = [False, False]
+        primes = [0, 0]
         
         for i in range(2, max(nums)):
-            primes.append(is_prime(i))
+            if is_prime(i):
+                primes.append(i)
+            else:
+                primes.append(primes[i - 1])
             
         prev = 0
         for n in nums:
             upper_bound = n - prev
             
-            largest_p = 0
-            for i in reversed(range(2, upper_bound)):
-                if primes[i]:
-                    largest_p = i
-                    break
+            largest_p = primes[upper_bound - 1]
                 
             if n - largest_p <= prev:
                 return False
