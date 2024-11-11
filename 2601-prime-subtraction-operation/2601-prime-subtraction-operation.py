@@ -6,6 +6,11 @@ class Solution:
                     return False
             
             return True
+        
+        primes = [False, False]
+        
+        for i in range(2, max(nums)):
+            primes.append(is_prime(i))
             
         prev = 0
         for n in nums:
@@ -13,7 +18,7 @@ class Solution:
             
             largest_p = 0
             for i in reversed(range(2, upper_bound)):
-                if is_prime(i):
+                if primes[i]:
                     largest_p = i
                     break
                 
