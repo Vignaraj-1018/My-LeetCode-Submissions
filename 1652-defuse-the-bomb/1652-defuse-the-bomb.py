@@ -1,7 +1,9 @@
 class Solution:
     def decrypt(self, code: List[int], k: int) -> List[int]:
-        res = []
         n = len(code)
+        if k == 0:
+            return [0] * n
+        res = []
         for i in range(n):
             if k > 0:
                 cur, j = 0, (i + 1) % n
