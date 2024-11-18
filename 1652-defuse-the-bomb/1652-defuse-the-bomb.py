@@ -2,6 +2,9 @@ class Solution:
     def decrypt(self, code: List[int], k: int) -> List[int]:
         n = len(code)
         res = [0] * n
+        
+        if k == 0:
+            return res
 
         l, cur_sum = 0, 0
         for r in range(n + abs(k)):
