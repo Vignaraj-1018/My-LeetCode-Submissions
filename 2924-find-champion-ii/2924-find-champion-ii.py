@@ -6,8 +6,12 @@ class Solution:
             incoming[d] += 1
         
         res = []
+        cnt = 0
         for i, c in enumerate(incoming):
             if c == 0: 
                 res.append(i)
+                cnt += 1
+                if cnt > 1:
+                    return -1
     
-        return -1 if len(res) > 1 else res[0]
+        return res[0]
