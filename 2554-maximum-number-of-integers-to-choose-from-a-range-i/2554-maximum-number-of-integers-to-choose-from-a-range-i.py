@@ -5,13 +5,10 @@ class Solution:
         _banned = set(banned)
         for i in range(1, n + 1):
             
-            if i in _banned:
-                continue
-            
-            if cur + i <= maxSum:
+            if i not in _banned:
                 cur += i
+                if cur > maxSum:
+                    break
                 res += 1
-            else:
-                break
         
         return res
