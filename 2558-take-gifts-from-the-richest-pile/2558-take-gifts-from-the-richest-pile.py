@@ -4,6 +4,7 @@ class Solution:
         heapq.heapify(maxHeap)
         
         for _ in range(k):
-            heapq.heappush(maxHeap, -floor(sqrt(-heapq.heappop(maxHeap))))
+            cur = -heapq.heappop(maxHeap)
+            heapq.heappush(maxHeap, -floor(sqrt(cur)))
             
         return -sum(maxHeap)
