@@ -3,12 +3,12 @@ class Solution:
 
         minHeap = [(n, i) for i, n in enumerate(nums)]
         heapq.heapify(minHeap)
-        res = nums[::]
+        
         
         for _ in range(k):
             n, i = heapq.heappop(minHeap)
-            res[i] *= multiplier
-            heapq.heappush(minHeap,(res[i], i))
+            nums[i] *= multiplier
+            heapq.heappush(minHeap,(nums[i], i))
             
         
-        return res
+        return nums
