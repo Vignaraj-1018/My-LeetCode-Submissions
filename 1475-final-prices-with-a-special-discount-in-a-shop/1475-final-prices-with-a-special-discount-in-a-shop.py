@@ -1,6 +1,6 @@
 class Solution:
     def finalPrices(self, prices: List[int]) -> List[int]:
-        res = [p for p in prices]
+        res = prices[::]
         
         stack = []
         
