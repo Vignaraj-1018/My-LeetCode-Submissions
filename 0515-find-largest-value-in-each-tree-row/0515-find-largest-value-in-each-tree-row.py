@@ -14,7 +14,7 @@ class Solution:
         res = []
         
         while q:
-            _max = float("-inf")
+            _max = q[0].val
             
             for _ in range(len(q)):
                 node = q.popleft()
