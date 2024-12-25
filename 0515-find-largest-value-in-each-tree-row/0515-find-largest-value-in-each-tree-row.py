@@ -7,11 +7,11 @@
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         
+        if not root:
+            return []
+        
         q = deque([root])
         res = []
-        
-        if not root:
-            return res
         
         while q:
             _max = float("-inf")
